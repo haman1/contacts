@@ -46,10 +46,9 @@
 	<div class="container center">
 		<?php if($contact): ?>
 			<h4><?php echo $contact['name']; ?></h4>
-            <p>Phone Number <?php echo $contact['phone']; ?></p>
 			<p>Created by <?php echo $contact['email']; ?></p>
 			<p><?php echo date($contact['created_at']); ?></p>
-			<p><?php echo $contact['address']; ?></p>
+			<p><?php echo $contact['phone']; ?></p>
 
             <!-- DELETE FORM -->
 			<form action="details.php" method="POST">
