@@ -1,5 +1,7 @@
 <?php 
 
+	include('config/db_connect.php');
+
 	// if(isset($_GET['submit'])){
 	// 	echo $_GET['email'] . '<br />';
 	// 	echo $_GET['name'] . '<br />';
@@ -56,8 +58,19 @@
 	if(array_filter($errors)){
 		//echo 'errors in form';
 	} else {
-		//echo 'form is valid';
-		header('Location: index.php');
+		// escape sql chars
+		$email = mysqli_real_escape_string($conn, $_POST['email']);
+		$title = mysqli_real_escape_string($conn, $_POST['title']);
+		$ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
+		
+		$sql = "INSERT INTO contacts(name,email,phone,address) VALUES('$name', '$email', '$phone', '$address')";
+		// save to db and check
+		if(mysqli_query($conn, $sql)){
+			// success
+			header('Location: index.php');
+		} else {
+			echo 'query error: '. mysqli_error($conn);
+		}
 	}
 	}
 
@@ -78,7 +91,7 @@
 			<input type="text" name="name"  value="<?php echo htmlspecialchars($name) ?>">
 			<div class="red-text"><?php echo $errors['name']; ?></div>
 			<label>Phone Number</label>
-			<input type="number" name="phone"  value="<?php echo htmlspecialchars($phone) ?>">
+			<input type="text" name="phone"  value="<?php echo htmlspecialchars($phone) ?>">
 			<div class="red-text"><?php echo $errors['phone']; ?></div>
             <label>Address/Location</label>
 			<input type="text" name="address"  value="<?php echo htmlspecialchars($address) ?>">
