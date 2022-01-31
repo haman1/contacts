@@ -46,7 +46,7 @@
 	<div class="container center">
 		<?php if($contact): ?>
 			<h4><?php echo $contact['name']; ?></h4>
-			<p>Created by <?php echo $contact['email']; ?></p>
+			<?php echo $contact['email']; ?>
 			<p><?php echo date($contact['created_at']); ?></p>
 			<p><?php echo $contact['address']; ?></p>
 
