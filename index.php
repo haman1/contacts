@@ -39,7 +39,7 @@
 				<img src="img/contact.png"class="contact">
 					<div class="card-content center">
 						<h6><?php echo htmlspecialchars($contact['name']); ?></h6>
-						<div><?php echo htmlspecialchars($contact['phone']); ?></div>
+						
 					</div>
 					<div class="card-action right-align">
 						<a class="brand-text" href="details.php?id=<?php echo $contact['id'] ?>">more info</a>
